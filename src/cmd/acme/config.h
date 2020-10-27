@@ -82,5 +82,5 @@ int bartflag			= TRUE;
 #define C_BUTTON2HL             0xAA0000FF
 #define C_BUTTON3HL             0x006600FF
 
-#define C_WINBG					DRed
-#define C_WINBORDER				DGreen
+#define C_WINBG					DWhite
+#define C_WINBORDER				DBlack
