@@ -524,6 +524,8 @@ Image		*colbutton;
 Image		*button;
 Image		*but2col;
 Image		*but3col;
+Image		*winbgcol;
+Image		*winbordercol;
 Cursor		boxcursor;
 Row			row;
 int			timerpid;

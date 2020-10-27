@@ -29,7 +29,7 @@ colinit(Column *c, Rectangle r)
 	Rectangle r1;
 	Text *t;
 
-	draw(screen, r, display->white, nil, ZP);
+	draw(screen, r, winbgcol, nil, ZP);
 	c->r = r;
 	c->w = nil;
 	c->nw = 0;
@@ -181,7 +181,7 @@ colclose(Column *c, Window *w, int dofree)
 	memmove(c->w+i, c->w+i+1, (c->nw-i)*sizeof(Window*));
 	c->w = realloc(c->w, c->nw*sizeof(Window*));
 	if(c->nw == 0){
-		draw(screen, r, display->white, nil, ZP);
+		draw(screen, r, winbgcol, nil, ZP);
 		return;
 	}
 	up = 0;

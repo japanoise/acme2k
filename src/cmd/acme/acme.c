@@ -555,7 +555,7 @@ mousethread(void *v)
 		case MResize:
 			if(getwindow(display, Refnone) < 0)
 				error("attach to window");
-			draw(screen, screen->r, display->white, nil, ZP);
+			draw(screen, screen->r, winbgcol, nil, ZP);
 			iconinit();
 			scrlresize();
 			rowresize(&row, screen->clipr);
@@ -1000,6 +1000,9 @@ iconinit(void)
 		textcols[HTEXT] = allocimage(display, Rect(0,0,1,1), RGBA32, 1, C_TXTHLFG);
 		
 	}
+	
+	winbgcol = allocimage(display, Rect(0,0,1,1), RGBA32, 1, C_WINBG);
+	winbordercol = allocimage(display, Rect(0,0,1,1), RGBA32, 1, C_WINBORDER);
 
 	r = Rect(0, 0, Scrollwid+ButtonBorder, font->height+1);
 	if(button && eqrect(r, button->r))

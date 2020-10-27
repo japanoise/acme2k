@@ -28,7 +28,7 @@ rowinit(Row *row, Rectangle r)
 	Rectangle r1;
 	Text *t;
 
-	draw(screen, r, display->white, nil, ZP);
+	draw(screen, r, winbgcol, nil, ZP);
 	row->r = r;
 	row->col = nil;
 	row->ncol = 0;
@@ -73,7 +73,7 @@ rowadd(Row *row, Column *c, int x)
 		r = d->r;
 		if(Dx(r) < 100)
 			return nil;
-		draw(screen, r, display->white, nil, ZP);
+		draw(screen, r, winbgcol, nil, ZP);
 		r1 = r;
 		r1.max.x = min(x-Border, r.max.x-50);
 		if(Dx(r1) < 50)
@@ -191,7 +191,7 @@ rowdragcol(Row *row, Column *c, int _0)
 		p.x = c->r.max.x-80-Scrollwid;
 	r = d->r;
 	r.max.x = c->r.max.x;
-	draw(screen, r, display->white, nil, ZP);
+	draw(screen, r, winbgcol, nil, ZP);
 	r.max.x = p.x;
 	colresize(d, r);
 	r = c->r;
@@ -223,7 +223,7 @@ rowclose(Row *row, Column *c, int dofree)
 	memmove(row->col+i, row->col+i+1, (row->ncol-i)*sizeof(Column*));
 	row->col = realloc(row->col, row->ncol*sizeof(Column*));
 	if(row->ncol == 0){
-		draw(screen, r, display->white, nil, ZP);
+		draw(screen, r, winbgcol, nil, ZP);
 		return;
 	}
 	if(i == row->ncol){		/* extend last column right */
@@ -234,7 +234,7 @@ rowclose(Row *row, Column *c, int dofree)
 		c = row->col[i];
 		r.max.x = c->r.max.x;
 	}
-	draw(screen, r, display->white, nil, ZP);
+	draw(screen, r, winbgcol, nil, ZP);
 	colresize(c, r);
 }
 
@@ -584,7 +584,7 @@ rowload(Row *row, char *file, int initing)
 			r2.min.x = x;
 			if(Dx(r1) < 50 || Dx(r2) < 50)
 				continue;
-			draw(screen, Rpt(r1.min, r2.max), display->white, nil, ZP);
+			draw(screen, Rpt(r1.min, r2.max), winbgcol, nil, ZP);
 			colresize(c1, r1);
 			colresize(c2, r2);
 			r2.min.x = x-Border;
