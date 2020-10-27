@@ -13,8 +13,8 @@
  */
 
 char *fontnames[2] = {
-	"/lib/font/bit/profont/profont-12.font",
-	"/lib/font/bit/mntcarlo/mntcarlo.font"
+	"/mnt/font/FiraSans-Regular/10a/font",
+	"/mnt/font/FiraCode-Regular/10a/font",
 };
 
 /*
@@ -62,20 +62,23 @@ int bartflag			= TRUE;
  *  buttons highlight background.
  */
 
-#define C_TAGBG			0xFFFFFFFF
-#define C_TAGFG			0x000000FF
-#define C_TAGHLBG		0x999999FF
-#define C_TAGHLFG		0x000000FF
+#define ENABLE_PASTELS
+#define C_MIX                   DWhite
+#define C_TAGBG                 DPalebluegreen
+#define C_TAGFG                 0x000000FF
+#define C_TAGHLBG               DPalegreygreen
+#define C_TAGHLFG               0x000000FF
 
-#define C_TXTBG			0xFFFFFFFF
-#define C_TXTFG			0x000000FF
-#define C_TXTHLBG		0x999999FF
-#define C_TXTHLFG		0x000000FF
+#define C_TXTBG                 DPaleyellow
+#define C_TXTFG                 0x000000FF
+#define C_TXTHLBG               DDarkyellow
+#define C_TXTHLFG               0x000000FF
 
-#define C_WINBUTTON		0x4d4d4dFF
-#define C_COLBUTTON		0x55aaaaFF
-#define C_TMPBUTTON		0x55aaaaFF
-#define C_SCROLLBG		0x999999FF
+#define C_WINBUTTON             DPurpleblue
+#define C_COLBUTTON             DPurpleblue
+#define C_TMPBUTTON             DMedblue
+#define C_SCROLLBG              DYellowgreen
 
-#define C_BUTTON2HL		0x55aaaaFF
-#define C_BUTTON3HL		0x55aaaaFF
+#define C_BUTTON2HL             0xAA0000FF
+#define C_BUTTON3HL             0x006600FF
+
