@@ -1,0 +1,7 @@
+#!/bin/sh
+# A: start acme with some helpful settings
+
+export TERM=dumb
+export PAGER=nobs
+
+acme ${@:1}

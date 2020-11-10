@@ -1,0 +1,5 @@
+#!/bin/sh
+# clip: copy window to Windows clipboard via clip.exe
+
+echo -n "1,$" | 9p write acme/$winid/addr
+9p read acme/$winid/body | clip.exe
