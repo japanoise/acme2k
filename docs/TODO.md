@@ -8,7 +8,7 @@
     + `text.c`
   + also featuring `src/cmd/fontsrv/x11.c`
 + fontsrv-modification? what is up with that? can i make it better
-+ ctrl+shift+z = redo; delete = deletes current character see: `$PLAN9/include/keyboard.h` and `$PLAN9/src/cmd/acme/text.c`.
++ ctrl+shift+z = redo; see: `$PLAN9/include/keyboard.h` and `$PLAN9/src/cmd/acme/text.c`.
 + look into grabbing just the neccesary parts of acme from plan9port to create a "stand alone complex" of some sort.
 + windows-version? not really friendly to the whole compiled from the source idea, which leads me to
 + parsing colorscheme at the start of `acme2k` from a config file.  
