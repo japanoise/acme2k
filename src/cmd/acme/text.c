@@ -540,7 +540,7 @@ textbswidth(Text *t, Rune c)
 	int skipping;
 
 	/* there is known to be at least one character to erase */
-	if(c == 0x08)	/* ^H: erase character */
+	if (c == 0x08 || 0x7F)	/* ^H: erase character/DEL */
 		return 1;
 	q = t->q0;
 	skipping = TRUE;
@@ -921,15 +921,19 @@ texttype(Text *t, Rune r)
 		t->iq1 = t->q0;
 		return;
 
-/*
- *  quick hack for DELETE-key, just added it to see what happens and
- *  apparently it works like ^U and erases whole lines. i should learn c
- */
- 
-		
+	case 0x7F:  /* [delete key] */
+		/* ensure we're not at the end of the buffer */
+		if(t->q1 >= t->file->b.nc) {
+			return;
+		}
+		/* emulate rightarrow key */
+		typecommit(t);
+		textshow(t, t->q1+1, t->q1+1, TRUE);
+		/* emulate backspace key */
+		// r = 0x08; /* needed for textbswidth() to return correct value */
+					 /* now fall through to next case */
 	case 0x08:	/* ^H: erase character */
 	case 0x15:	/* ^U: erase line */
-	case 0x7F:
 	case 0x17:	/* ^W: erase  word */
 		if(t->q0 == 0)	/* nothing to erase */
 			return;
