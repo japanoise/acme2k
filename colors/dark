@@ -1,0 +1,19 @@
+/* Dark colorscheme seen in screenshots */
+/* I think it's a tweaked tomorrow night theme? */
+
+#define C_TXTBG			0x1D1F21FF
+#define C_TXTFG			0xDDDDDDFF
+#define C_TXTHLBG		0xB294BBFF
+#define C_TXTHLFG		0x353651FF
+
+#define C_TAGBG			0x333333FF
+#define C_TAGFG			0xBBBBBBFF
+#define C_TAGHLBG		0xB294BBFF
+#define C_TAGHLFG		0x353651FF
+
+#define C_WINBUTTON		0xAA4465FF
+#define C_COLBUTTON		0x436763FF
+#define C_TMPBUTTON		0x436763FF
+#define C_SCROLLBG		0x363636FF
+
+/* You'll need to provide C_BUTTON2HL & C_BUTTON3HL */
