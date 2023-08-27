@@ -998,9 +998,9 @@ iconinit(void)
 		textcols[BORD] 	= allocimage(display, Rect(0,0,1,1), RGBA32, 1, C_SCROLLBG);
 		textcols[TEXT] 	= allocimage(display, Rect(0,0,1,1), RGBA32, 1, C_TXTFG);
 		textcols[HTEXT] = allocimage(display, Rect(0,0,1,1), RGBA32, 1, C_TXTHLFG);
-		
+
 	}
-	
+
 	winbgcol = allocimage(display, Rect(0,0,1,1), RGBA32, 1, C_WINBG);
 	winbordercol = allocimage(display, Rect(0,0,1,1), RGBA32, 1, C_WINBORDER);
 

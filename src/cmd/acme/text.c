@@ -388,7 +388,7 @@ textinsert(Text *t, uint q0, Rune *r, uint n, int tofile)
 					textscrdraw(u);
 				}
 			}
-					
+
 	}
 	if(q0 < t->iq1)
 		t->iq1 += n;
@@ -549,7 +549,7 @@ textbswidth(Text *t, Rune c)
 		if(r == '\n'){		/* eat at most one more character */
 			if(q == t->q0)	/* eat the newline */
 				--q;
-			break; 
+			break;
 		}
 		if(c == 0x17){
 			eq = isalnum(r);
@@ -703,7 +703,7 @@ texttype(Text *t, Rune r)
 	case_Down:
 		q0 = t->org+frcharofpt(&t->fr, Pt(t->fr.r.min.x, t->fr.r.min.y+n*t->fr.font->height));
 		textsetorigin(t, q0, TRUE);
-		return;	
+		return;
 	case Kscrolloneup:
 		if(t->what == Tag)
 			goto Tagup;
@@ -716,16 +716,16 @@ texttype(Text *t, Rune r)
 		textsetorigin(t, q0, TRUE);
 		return;
 
-/* 
- *  Keybindings for moving the cursor up and 
+/*
+ *  Keybindings for moving the cursor up and
  *  down the text via up and down arrow keys.
  */
-	
+
 	case Kdown:
 		if(t->what == Tag)
  			goto Tagdown;
 		typecommit(t);
-		/* 1rst check for being in the last line*/	
+		/* 1rst check for being in the last line*/
 		q0 = t->q0;
 		q1 = q0;
 		if (q1) q1--;
@@ -756,7 +756,7 @@ texttype(Text *t, Rune r)
 		typecommit(t);
 		nnb = 0;
 		if(t->q0>0 && textreadc(t, t->q0-1)!='\n')
-			nnb = textbswidth(t, 0x15); 
+			nnb = textbswidth(t, 0x15);
 		/* BOL - 1 if not first line of txt BOL*/
 		if( t->q0-nnb > 1  && textreadc(t, t->q0-nnb-1)=='\n' ) nnb++;
 		textshow(t, t->q0-nnb, t->q0-nnb, TRUE);
@@ -785,7 +785,7 @@ texttype(Text *t, Rune r)
 			q0++;
 		textshow(t, q0, q0, TRUE);
 		return;
-		
+
 /* I'll keep the MAC-keybindings 'cuz im such a nice guy */
 
 	case Kcmd+'c':	/* %C: copy */
@@ -799,7 +799,7 @@ texttype(Text *t, Rune r)
 	case Kcmd+'Z':	/* %-shift-Z: redo */
 	 	typecommit(t);
 		undo(t, nil, nil, FALSE, 0, nil, 0);
-		return;	
+		return;
 
 /*
  *  Adding Windows and X11 -compatible Ctrl+C, Ctrl+Z and
@@ -836,16 +836,16 @@ texttype(Text *t, Rune r)
 		}
 		return;
 	}
-	
 
-	
+
+
 	if(t->what == Body){
 		seq++;
 		filemark(t->file);
 	}
-	
-	/* cut/paste must be done after the seq++/filemark */
-	
+
+	/* cut/paste must be done after the seq++/filemark */
+
 	switch(r){
 	case Kcmd+'x':	/* %X: cut */
 		typecommit(t);
@@ -867,9 +867,9 @@ texttype(Text *t, Rune r)
 		textshow(t, t->q0, t->q1, 1);
 		t->iq1 = t->q1;
 		return;
-	
+
 	/* Same for Windows / X11 */
-	
+
 	case 0x18:	/* Ctrl+X: cut */
 		typecommit(t);
 		if(t->what == Body){
@@ -899,7 +899,7 @@ texttype(Text *t, Rune r)
 		t->eq0 = ~0;
 	}
 	textshow(t, t->q0, t->q0, 1);
-	
+
 	switch(r){
 	case 0x06:	/* ^F: complete */
 	case Kins:
@@ -1280,7 +1280,7 @@ void
 textsetselect(Text *t, uint q0, uint q1)
 {
 	int p0, p1, ticked;
-	
+
 	/* t->fr.p0 and t->fr.p1 are always right; t->q0 and t->q1 may be off */
 	t->q0 = q0;
 	t->q1 = q1;
@@ -1433,7 +1433,7 @@ textselect23(Text *t, uint *q0, uint *q1, Image *high, int mask)
 {
 	uint p0, p1;
 	int buts;
-	
+
 	p0 = xselect(&t->fr, mousectl, high, &p1);
 	buts = mousectl->m.buttons;
 	if((buts & mask) == 0){
@@ -1500,7 +1500,7 @@ textdoubleclick(Text *t, uint *q0, uint *q1)
 
 	if(textclickhtmlmatch(t, q0, q1))
 		return;
-	
+
 	for(i=0; left[i]!=nil; i++){
 		q = *q0;
 		l = left[i];
@@ -1532,7 +1532,7 @@ textdoubleclick(Text *t, uint *q0, uint *q1)
 			return;
 		}
 	}
-	
+
 	/* try filling out word to right */
 	while(*q1<t->file->b.nc && isalnum(textreadc(t, *q1)))
 		(*q1)++;
@@ -1606,7 +1606,7 @@ static int
 ishtmlend(Text *t, uint q, uint *q0)
 {
 	int c, c1, c2;
-	
+
 	if(q < 2)
 		return 0;
 	if(textreadc(t, --q) != '>')
@@ -1634,7 +1634,7 @@ textclickhtmlmatch(Text *t, uint *q0, uint *q1)
 {
 	int depth, n;
 	uint q, nq;
-	
+
 	q = *q0;
 	// after opening tag?  scan forward for closing tag
 	if(ishtmlend(t, q, nil) == 1) {
@@ -1671,7 +1671,7 @@ textclickhtmlmatch(Text *t, uint *q0, uint *q1)
 			q--;
 		}
 	}
-	
+
 	return 0;
 }
 
