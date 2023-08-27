@@ -28,6 +28,11 @@ not compiling.
 ready thyself for thine bodieth utmost horrrifiength challengeth and read more
 about [acme](http://acme.cat-v.org/)
 
+or find a way to be awesome. it seems there are more than one:
+
+1. [mkmik/awesome-acme](https://github.com/mkmik/awesome-acme)
+2. [henesy/awesome-acme](https://github.com/henesy/awesome-acme)
+
 ## acme2k features
 
 ![a1](img/a1.png)
