@@ -132,7 +132,9 @@ commented more than enough to explain what every little variable or **#define**
 does.
 
  `$GITPATH/colors` are just some example colorschemes i've made, fiddled with
- and been juggling between.
+ and been juggling between. you can also use
+ [base16](https://github.com/japanoise/base16-acme2k) if that's more your speed,
+ or just as a starting point...
 
 ```bash
 cd $PLAN9/src/cmd/acme; mk install
